@@ -29,17 +29,17 @@ export class AppComponent {
       this.pages = [{
         pagename: "Home",
         icon: "home",
-        url: "tabs/tab1"
+        url: "tabs/home"
       },
       {
         pagename: "Homework",
         icon: "book",
-        url: "tabs/tab2"
+        url: "tabs/homework"
       },
       {
         pagename: "Timetable",
         icon: "calendar",
-        url: "tabs/tab3"
+        url: "tabs/timetable"
       }]
     });
   }
