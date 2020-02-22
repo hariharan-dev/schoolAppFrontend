@@ -44,7 +44,7 @@ export class AppComponent {
     });
   }
 
-  goTo(page) {
+  goToPage(page) {
     this.router.navigate([page.url]);
   }
 }

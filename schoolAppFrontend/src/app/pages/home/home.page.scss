@@ -1,0 +1,19 @@
+ion-content ion-toolbar {
+  --background: translucent;
+}
+
+ion-col {
+  text-align: -webkit-center;
+}
+
+.circle {
+height: 6rem;
+width: 6rem;
+border-radius: 50%;
+background: transparent;
+border: 2px solid #a2a0a0;
+display: table-cell;
+text-align: center;
+vertical-align: middle;
+
+}

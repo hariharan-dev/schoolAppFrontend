@@ -3,17 +3,15 @@ import { RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { HomeworkPage } from './homework.page';
-import { ExploreContainerComponentModule } from '../explore-container/explore-container.module';
+import { TimetablePage } from './timetable.page';
 
 @NgModule({
   imports: [
     IonicModule,
     CommonModule,
     FormsModule,
-    ExploreContainerComponentModule,
-    RouterModule.forChild([{ path: '', component: HomeworkPage }])
+    RouterModule.forChild([{ path: '', component: TimetablePage }])
   ],
-  declarations: [HomeworkPage]
+  declarations: [TimetablePage]
 })
-export class HomeworkPageModule {}
+export class TimetablePageModule {}
