@@ -1,0 +1,75 @@
+::ng-deep {
+
+.mbsc-ios .mbsc-cal-cell {
+    border-top: none!important;
+}
+.mbsc-cal-days {
+    margin-top: .7rem;
+    margin-bottom: .5rem;
+}
+
+.mbsc-ios .mbsc-cal-c .mbsc-cal .mbsc-cal-body .mbsc-cal-row .mbsc-selected .mbsc-cal-cell-txt {
+    border-color: transparent;
+    background: none;
+    color: #000;
+    font-weight: 900;
+}
+
+.mbsc-cal-day-diff .mbsc-cal-day-date {
+    opacity: 0;
+}
+.mbsc-cal-cell-i .mbsc-cal-day-diff{
+    div {
+        display: none;
+    }
+}
+.mbsc-cal-day-i {
+    div {
+        display: none;
+    }
+}
+[attribute = TRIAL] {
+    display: none;
+  }
+.holiday {
+    .alert-sub-title.sc-ion-alert-md {
+        color: green!important;
+        font-weight: bold;;
+        text-align: center;
+        font-size: 1.5rem;
+    }
+}
+
+.leave {
+    .alert-sub-title.sc-ion-alert-md {
+        color: red!important;
+        font-weight: bold;;
+        text-align: center;
+        font-size: 1.5rem;
+    }
+  }
+
+  .working-day {
+    .alert-sub-title.sc-ion-alert-md {
+        color: #000!important;
+        font-weight: bold;;
+        text-align: center;
+        font-size: 1.5rem;
+    }
+  }
+}
+
+ion-card-header {
+    text-align: center;
+    font-weight: bold;
+}
+
+.leave-days {
+    color: red;
+    font-weight: bold;
+}
+
+.percentage {
+    color: green;
+    font-weight: bold;
+}

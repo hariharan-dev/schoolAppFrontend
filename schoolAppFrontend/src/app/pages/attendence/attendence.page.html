@@ -1,0 +1,28 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Attendence</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <mbsc-calendar [(ngModel)]="colorDay" display="inline" [colors]="holidays" [options]="dateSettings"></mbsc-calendar>
+  <ion-card>
+    <ion-card-header>
+      Attendence Percentage
+    </ion-card-header>
+    <ion-card-content>
+      <ion-row>
+        <ion-col size="10">No of Working days yet</ion-col>
+        <ion-col size="2">{{working_days}}</ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="10">No of Leaves</ion-col>
+        <ion-col class="leave-days" size="2">{{no_of_leaves}}</ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="10">Attendence Percentage</ion-col>
+        <ion-col class="percentage" col-2>{{percentage}}%</ion-col>
+      </ion-row>
+    </ion-card-content>
+  </ion-card>
+</ion-content>
