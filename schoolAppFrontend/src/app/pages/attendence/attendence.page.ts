@@ -55,7 +55,7 @@ export class AttendencePage implements OnInit {
     "01/24/2020": 'Feeling not well leave',
     "01/28/2020": 'Feeling not well leave',
     "02/24/2020": 'Feeling not well leave',
-    "03/24/2020":  'Feeling not well leave',
+    "03/24/2020": 'Feeling not well leave',
     "04/24/2020": 'Feeling not well leave',
     "05/24/2020": 'Feeling not well leave',
     "06/24/2020": 'Feeling not well leave',
@@ -75,60 +75,60 @@ export class AttendencePage implements OnInit {
     this.no_of_leaves = leaveDate.length;
 
     govtHolidayDate.forEach((day) => {
-      this.holidays.push({d: day, background: 'green'});
+      this.holidays.push({ d: day, background: 'green' });
 
     });
 
     leaveDate.forEach((day) => {
-      this.holidays.push({d: day, background: 'red'})
+      this.holidays.push({ d: day, background: 'red' })
     });
 
     for (var d = new Date(2020, 0, 1); d <= now; d.setDate(d.getDate() + 1)) {
 
-      if(d.getDay() !== 6 && d.getDay() !==0) {
-      this.working_days++;
+      if (d.getDay() !== 6 && d.getDay() !== 0) {
+        this.working_days++;
       }
-  }
-
-  govtHolidayDate.forEach((date) => {
-    let tmp = date.split('/');
-    let leaveDate = new Date(+tmp[2],+tmp[0]-1,+tmp[1]);
-
-    if(leaveDate <= now && leaveDate.getDay() !== 6 && leaveDate.getDay() !==0) {
-      this.working_days--;
-      console.log("Days", leaveDate, this.working_days);
     }
-  });
 
-  this.percentage = Math.round(((this.working_days-this.no_of_leaves)/this.working_days)*100)
+    govtHolidayDate.forEach((date) => {
+      let tmp = date.split('/');
+      let leaveDate = new Date(+tmp[2], +tmp[0] - 1, +tmp[1]);
 
-  
-  console.log("no of working days:", this.working_days);
+      if (leaveDate <= now && leaveDate.getDay() !== 6 && leaveDate.getDay() !== 0) {
+        this.working_days--;
+        console.log("Days", leaveDate, this.working_days);
+      }
+    });
+
+    this.percentage = Math.round(((this.working_days - this.no_of_leaves) / this.working_days) * 100)
+
+
+    console.log("no of working days:", this.working_days);
   }
 
   dateSettings: MbscDatetimeOptions = {
-  onSet: (event, inst) => {
-    if (event.valueText in this.govt_holidays) {
-    this.presentAlert('Holiday', event.valueText, this.govt_holidays[event.valueText], 'holiday');
-    }
-    else if (event.valueText in this.leaves) {
-      this.presentAlert('Leave', event.valueText, this.leaves[event.valueText], 'leave');
-    }
-    else {
-      this.presentAlert('Working Day', event.valueText, 'a working day', 'working-day');
+    onSet: (event, inst) => {
+      if (event.valueText in this.govt_holidays) {
+        this.presentAlert('Holiday', event.valueText, this.govt_holidays[event.valueText], 'holiday');
+      }
+      else if (event.valueText in this.leaves) {
+        this.presentAlert('Leave', event.valueText, this.leaves[event.valueText], 'leave');
+      }
+      else {
+        this.presentAlert('Working Day', event.valueText, 'a working day', 'working-day');
 
+      }
     }
-}
   }
 
   async presentAlert(title, date, reason, style) {
     const alert = await this.alertCtrl.create({
-    message: date+" is "+reason,
-    cssClass: style,
-    subHeader: title,
-    buttons: ['Ok']
-   });
-   await alert.present(); 
-}
+      message: date + " is " + reason,
+      cssClass: style,
+      subHeader: title,
+      buttons: ['Ok']
+    });
+    await alert.present();
+  }
 
 }

@@ -1,3 +1,35 @@
 ion-content ion-toolbar {
   --background: translucent;
 }
+
+::ng-deep {
+  .mbsc-ios .mbsc-cal-cell {
+      border-top: none!important;
+  }
+  .mbsc-cal-days {
+      margin-top: .7rem;
+      margin-bottom: .5rem;
+  }
+  .mbsc-ios .mbsc-cal-c .mbsc-cal .mbsc-cal-body .mbsc-cal-row .mbsc-selected .mbsc-cal-cell-txt {
+    border-color: transparent;
+    font-weight: 900;
+}
+
+.mbsc-cal-day-diff .mbsc-cal-day-date {
+    opacity: 0;
+}
+
+.mbsc-cal-cell-i .mbsc-cal-day-diff{
+  div {
+      display: none;
+  }
+}
+.mbsc-cal-day-i {
+  div {
+      display: none;
+  }
+}
+.mbsc-cal-day-diff.mbsc-selected .mbsc-cal-day-date  {
+  opacity: 0;
+}
+}
