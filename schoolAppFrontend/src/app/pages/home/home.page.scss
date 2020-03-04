@@ -7,13 +7,38 @@ ion-col {
 }
 
 .circle {
-height: 6rem;
-width: 6rem;
-border-radius: 50%;
-background: transparent;
+height: 8rem;
+width: 10rem;
+border-radius: 15%;
+background: #fff;
 border: 2px solid #a2a0a0;
 display: table-cell;
 text-align: center;
 vertical-align: middle;
 
+}
+
+ion-col {
+margin-top: 3px;;
+
+}
+::ng-deep {
+  #background-content {
+    background-attachment: gray;
+  }
+}
+
+
+ion-grid {
+  background-color: #eae8e8;
+}
+
+ion-icon {
+  font-size: 3rem;
+  color: #F44336;
+  margin-bottom: .5rem;
+}
+
+ion-menu-button {
+  color: #F44336
 }
