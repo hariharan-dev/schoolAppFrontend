@@ -12,11 +12,42 @@ ion-content ion-toolbar {
 }
 ion-grid{
   position: relative;
+  padding:0;
   // top:calc(50% - 185px)
 }
-ion-row.headerCol ion-col{
-  background-color:  rgb(2,0,36);
+
+ion-row.headerCol:first-child ion-col{
+  height: 32px;
+}
+
+ion-row:nth-child(even)  ion-col:nth-child(even){
+  background-color: #c60929;
   color: white;
+}
+ion-row:nth-child(even)  ion-col{
+  color: #c60929;
+}
+// ion-row:nth-child(odd)  ion-col:nth-child(even){
+//   background-color: #c60929;
+//   color: white;
+// }
+ion-row:nth-child(odd)  ion-col{
+  background-color: #c60929;
+  color: white;
+}
+ion-row:nth-child(odd)  ion-col:first-child,ion-row:nth-child(even)  ion-col:first-child{
+ color: rgb(2,0,36);
+}
+ion-row:nth-child(odd)  ion-col:nth-child(even){
+  background-color: white;
+  color: #c60929;
+}
+ion-row.headerCol ion-col{
+  background-color:  rgb(2,0,36) !important;
+  color: white !important;
+}
+ion-row  ion-col:first-child{
+  background: white;
 }
 ion-col{
   // border:1px solid;
@@ -27,10 +58,10 @@ ion-col{
     background: rgb(2,0,36);
     background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(198,9,41,1) 35%, rgba(0,212,255,1) 100%);
     background: white;
-    border-color: linear-gradient(90deg, rgba(198,9,41,1) 46%, rgba(255,253,253,0.05926120448179273) 100%);
-    border: 1px solid #c60929;
+    // border-color: linear-gradient(90deg, rgba(198,9,41,1) 46%, rgba(255,253,253,0.05926120448179273) 100%);
+    border: 1px solid #bdacaf;
     font-size: 20px;
-    // height: 58px;
+     height: 100px;
 }
 
 .col:last-child {
