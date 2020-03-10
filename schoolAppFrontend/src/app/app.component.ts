@@ -1,8 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, AfterViewInit } from '@angular/core';
 import { Platform } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { Router } from '@angular/router';
+import { AuthenticationService } from './services/authentication.service';
 
 
 @Component({
@@ -20,16 +21,20 @@ export class AppComponent {
   menu_current_item;
   menu_position;
   routerPage;
+  showHead: boolean = false;
 
   constructor(
     private platform: Platform,
     private splashScreen: SplashScreen,
     private statusBar: StatusBar,
+    private authenticationService: AuthenticationService,
     private router: Router
   ) {
     this.initializeApp();
-    console.log("rouer", router.url)
     this.routerPage = router.url;
+  }
+
+  ngOnInit() {
   }
 
   initializeApp() {
@@ -52,9 +57,16 @@ export class AppComponent {
         url: "tabs/timetable"
       }]
     });
-  }
 
-  ngOnInit() {
+    this.authenticationService.authenticationState.subscribe(state => {
+      if (state) {
+        this.router.navigate(['members', 'home']);
+        this.showHead = true;
+      } else {
+        this.router.navigate(['login']);
+        this.showHead = false;
+      }
+    });
   }
 
   editProfile() {
@@ -70,5 +82,17 @@ export class AppComponent {
 
     document.querySelector('.circle').classList.toggle('open');
 
+  }
+
+  addClass() {
+    document.querySelector('.home-tab').classList.add('tab-selected');
+  }
+
+  removeClass() {
+    document.querySelector('.home-tab').classList.remove('tab-selected');
+  }
+
+  logout() {
+    this.authenticationService.logout();
   }
 }
