@@ -8,12 +8,7 @@ import { Router } from '@angular/router';
 })
 export class HomePage {
 
-  constructor(private router: Router) {
-    let elem = <HTMLElement>document.querySelector("ion-tab-bar");
-    if (elem != null) {
-      elem.style.display = 'none';
-    }
-  }
+  constructor(private router: Router) {}
 
   goToPage(path) {
     this.router.navigate([path]);

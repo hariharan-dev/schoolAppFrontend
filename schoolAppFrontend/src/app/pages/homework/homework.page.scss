@@ -1,6 +1,10 @@
 ion-content ion-toolbar {
   --background: translucent;
 }
+ion-title {
+  text-align: center;
+  padding-left: 4rem;
+}
 
 ::ng-deep {
   .mbsc-ios .mbsc-cal-cell {

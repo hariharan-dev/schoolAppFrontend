@@ -8,10 +8,14 @@ const routes: Routes = [
   // },
   {
     path: '',
-    loadChildren: () =>
-    import('../app/pages/home/home.module').then(m => m.HomePageModule)
-    // import('./pages/login/login.module').then( m => m.LoginPageModule)
+    loadChildren: () => import('./pages/login/login.module').then( m => m.LoginPageModule)
   },
+  // {
+  //   path: '',
+  //   loadChildren: () =>
+  //   import('../app/pages/home/home.module').then(m => m.HomePageModule)
+  //   // import('./pages/login/login.module').then( m => m.LoginPageModule)
+  // },
   {
     path: 'attendence',
     loadChildren: () => import('./pages/attendence/attendence.module').then( m => m.AttendencePageModule)
