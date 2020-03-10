@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { Router } from '@angular/router';
 import { MenuController } from '@ionic/angular';
+import { AuthenticationService } from 'src/app/services/authentication.service';
 
 
 @Component({
@@ -11,18 +12,19 @@ import { MenuController } from '@ionic/angular';
 })
 export class LoginPage implements OnInit {
 
-  constructor(private router: Router, public menu: MenuController) { 
+  constructor(private router: Router, private auth: AuthenticationService) { 
     // let elem = <HTMLElement>document.querySelector("ion-tab-bar");
     // if (elem != null) {
     //   elem.style.display = 'none';
     // }
-    this.menu.enable(false, 'custom');
+    // this.menu.enable(false, 'custom');
   }
 
   ngOnInit() {
   }
 
   loginForm() {
+    this.auth.login();
     this.router.navigate(['home']);
   }
 

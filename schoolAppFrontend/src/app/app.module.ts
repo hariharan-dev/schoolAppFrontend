@@ -11,16 +11,21 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { IonicStorageModule } from '@ionic/storage';
+import { LoginPage } from './pages/login/login.page';
 
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, LoginPage],
   entryComponents: [],
-  imports: [ 
+  imports: [
     FormsModule,
     MbscModule,
     ReactiveFormsModule,
-BrowserModule, IonicModule.forRoot(), AppRoutingModule],
+    BrowserModule,
+    IonicModule.forRoot(),
+    AppRoutingModule,
+    IonicStorageModule.forRoot()],
   providers: [
     StatusBar,
     SplashScreen,
@@ -29,4 +34,4 @@ BrowserModule, IonicModule.forRoot(), AppRoutingModule],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
-export class AppModule {}
+export class AppModule { }
