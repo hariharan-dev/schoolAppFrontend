@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
-import { MbscModule } from '@mobiscroll/angular';
+import { CalendarModule } from '@syncfusion/ej2-angular-calendars';
 
 import { AttendencePageRoutingModule } from './attendence-routing.module';
 
@@ -16,7 +16,7 @@ import { HttpClientModule, HttpClientJsonpModule } from '@angular/common/http';
     FormsModule,
     IonicModule,
     AttendencePageRoutingModule,
-    MbscModule,
+    CalendarModule,
     HttpClientModule,
     HttpClientJsonpModule
   ],

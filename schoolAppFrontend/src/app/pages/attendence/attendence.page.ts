@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { mobiscroll } from '@mobiscroll/angular';
-import { MbscDatetimeOptions } from '@mobiscroll/angular';
 import { HttpClient } from '@angular/common/http';
 import { AlertController } from '@ionic/angular';
+import { CalendarComponent, Calendar } from '@syncfusion/ej2-angular-calendars';
 
 
 mobiscroll.settings = {
@@ -19,7 +19,10 @@ const now = new Date();
 })
 export class AttendencePage implements OnInit {
 
-  constructor(private http: HttpClient, private alertCtrl: AlertController) { }
+  @ViewChild('calendarObj', {static: false}) calendarObj: CalendarComponent;
+
+  constructor(private http: HttpClient, private alertCtrl: AlertController) {
+  }
 
 
   colorDay: Date;
@@ -31,19 +34,19 @@ export class AttendencePage implements OnInit {
   percentage = 0;
 
   govt_holidays = {
-    '01/01/2020': "New Year's Day",
-    '01/15/2020': 'Pongal',
-    '01/16/2020': 'Thiruvalluvar Day',
-    '01/17/2020': 'Uzhavar Thirunal',
-    '01/26/2020': 'Republic Day',
-    '04/10/2020': 'Good Friday',
-    '04/14/2020': 'Tamil New Year',
-    '05/01/2020': 'May Day',
-    '08/01/2020': 'Bakrid / Eid al Adha',
-    '08/15/2020': 'Independence Day',
-    '08/22/2020': 'Ganesh Chaturthi',
-    '08/30/2020': 'Muharram',
-    '10/02/2020': 'Gandhi Jayanti',
+    '1/1/2020': "New Year's Day",
+    '1/15/2020': 'Pongal',
+    '1/16/2020': 'Thiruvalluvar Day',
+    '1/17/2020': 'Uzhavar Thirunal',
+    '1/26/2020': 'Republic Day',
+    '4/10/2020': 'Good Friday',
+    '4/14/2020': 'Tamil New Year',
+    '5/1/2020': 'May Day',
+    '8/1/2020': 'Bakrid / Eid al Adha',
+    '8/15/2020': 'Independence Day',
+    '8/22/2020': 'Ganesh Chaturthi',
+    '8/30/2020': 'Muharram',
+    '10/2/2020': 'Gandhi Jayanti',
     '10/25/2020': 'Ayutha Poojai',
     '10/26/2020': 'Vijaya Dashami',
     '10/30/2020': 'Eid e Milad',
@@ -52,73 +55,106 @@ export class AttendencePage implements OnInit {
   }
 
   leaves = {
-    "01/24/2020": 'Feeling not well leave',
-    "01/28/2020": 'Feeling not well leave',
-    "02/24/2020": 'Feeling not well leave',
-    "03/24/2020": 'Feeling not well leave',
-    "04/24/2020": 'Feeling not well leave',
-    "05/24/2020": 'Feeling not well leave',
-    "06/24/2020": 'Feeling not well leave',
-    "07/24/2020": 'Feeling not well leave',
-    "08/24/2020": 'Feeling not well leave',
-    "09/24/2020": 'Feeling not well leave',
+    "1/24/2020": 'Feeling not well leave',
+    "1/28/2020": 'Feeling not well leave',
+    "2/24/2020": 'Feeling not well leave',
+    "3/24/2020": 'Feeling not well leave',
+    "4/24/2020": 'Feeling not well leave',
+    "5/24/2020": 'Feeling not well leave',
+    "6/24/2020": 'Feeling not well leave',
+    "7/24/2020": 'Feeling not well leave',
+    "8/24/2020": 'Feeling not well leave',
+    "9/24/2020": 'Feeling not well leave',
     "10/24/2020": 'Feeling not well leave',
     "11/24/2020": 'Feeling not well leave',
     "12/24/2020": 'Feeling not well leave',
-    "01/23/2020": 'Feeling not well leave',
-    "01/29/2020": 'Feeling not well leave'
+    "1/23/2020": 'Feeling not well leave',
+    "1/29/2020": 'Feeling not well leave'
   }
 
+  partialLeaves = {
+    "1/20/2020": 'Feeling not well leave',
+    "1/11/2020": 'Feeling not well leave',
+    "2/20/2020": 'Feeling not well leave',
+    "3/20/2020": 'Feeling not well leave',
+    "4/20/2020": 'Feeling not well leave',
+    "5/20/2020": 'Feeling not well leave',
+    "6/20/2020": 'Feeling not well leave',
+    "7/20/2020": 'Feeling not well leave',
+    "8/20/2020": 'Feeling not well leave',
+    "9/20/2020": 'Feeling not well leave',
+    "10/04/2020": 'Feeling not well leave',
+    "11/20/2020": 'Feeling not well leave',
+    "12/20/2020": 'Feeling not well leave'
+  }
+
+  govtHolidayDates;
+  leaveDates;
+  partialLeavesDates;
+
   ngOnInit() {
-    let govtHolidayDate = Object.keys(this.govt_holidays);
-    let leaveDate = Object.keys(this.leaves)
-    this.no_of_leaves = leaveDate.length;
+    this.govtHolidayDates = Object.keys(this.govt_holidays);
+    this.leaveDates = Object.keys(this.leaves);
+    this.partialLeavesDates = Object.keys(this.partialLeaves)
+    this.no_of_leaves = this.leaveDates.length+(this.partialLeavesDates.length/2);
 
-    govtHolidayDate.forEach((day) => {
-      this.holidays.push({ d: day, background: 'green' });
-
-    });
-
-    leaveDate.forEach((day) => {
-      this.holidays.push({ d: day, background: 'red' })
-    });
-
-    for (var d = new Date(2020, 0, 1); d <= now; d.setDate(d.getDate() + 1)) {
+    for (var d = new Date(2019, 5, 1); d <= now; d.setDate(d.getDate() + 1)) {
 
       if (d.getDay() !== 6 && d.getDay() !== 0) {
         this.working_days++;
       }
     }
 
-    govtHolidayDate.forEach((date) => {
-      let tmp = date.split('/');
-      let leaveDate = new Date(+tmp[2], +tmp[0] - 1, +tmp[1]);
-
-      if (leaveDate <= now && leaveDate.getDay() !== 6 && leaveDate.getDay() !== 0) {
-        this.working_days--;
-        console.log("Days", leaveDate, this.working_days);
-      }
-    });
-
     this.percentage = Math.round(((this.working_days - this.no_of_leaves) / this.working_days) * 100)
-
 
     console.log("no of working days:", this.working_days);
   }
 
-  dateSettings: MbscDatetimeOptions = {
-    onSet: (event, inst) => {
-      if (event.valueText in this.govt_holidays) {
-        this.presentAlert('Holiday', event.valueText, this.govt_holidays[event.valueText], 'holiday');
-      }
-      else if (event.valueText in this.leaves) {
-        this.presentAlert('Leave', event.valueText, this.leaves[event.valueText], 'leave');
-      }
-      else {
-        this.presentAlert('Working Day', event.valueText, 'a working day', 'working-day');
+  customDates(args): void {
+    console.log("DARTE", args.date.toLocaleDateString());
+    this.govtHolidayDates.forEach((date) => {
+      if(date == args.date.toLocaleDateString()) {
+        args.element.classList.add('holiday');
+      } 
+    });
 
+    this.leaveDates.forEach((date) => {
+      if(date == args.date.toLocaleDateString()) {
+        args.element.classList.add('leave');
+      } 
+    });
+
+    this.partialLeavesDates.forEach((date) => {
+      if(date == args.date.toLocaleDateString()) {
+        args.element.classList.add('partial');
       }
+    });
+    // if (+args.date.getDate() === 7 && +args.date.getMonth() == 3) {
+    //   args.element.className ='holiday';
+    // }
+    // if (+args.date.getDate() === 21 && +args.date.getMonth() == 2) {
+    //   args.element.className = 'leave';
+    // }
+  }
+
+  onChange(args) {
+
+    var date = args.value.toLocaleDateString();
+
+    if (date in this.govt_holidays) {
+      this.presentAlert('Holiday', date, this.govt_holidays[date], 'govt-holiday');
     }
+    else if (date in this.leaves) {
+      this.presentAlert('Leave', date, this.leaves[date], 'leave-day');
+    }
+    else if (date in this.partialLeaves) {
+      this.presentAlert('Half-day Leave', date, this.partialLeaves[date], 'partial-day');
+    }
+    else {
+      this.presentAlert('Working Day', date, 'a working day', 'working-day');
+    }
+
+    this.calendarObj.value = null;
   }
 
   async presentAlert(title, date, reason, style) {

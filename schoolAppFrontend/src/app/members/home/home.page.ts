@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
@@ -14,4 +14,11 @@ export class HomePage {
     this.router.navigate([path]);
   }
 
+  ionViewWillEnter() {
+    document.querySelector('.home-tab').classList.add('tab-selected');
+  }
+
+  ionViewDidLeave() {
+    document.querySelector('.home-tab').classList.remove('tab-selected');
+  }
 }

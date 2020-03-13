@@ -88,10 +88,6 @@ export class AppComponent {
     document.querySelector('.home-tab').classList.add('tab-selected');
   }
 
-  removeClass() {
-    document.querySelector('.home-tab').classList.remove('tab-selected');
-  }
-
   logout() {
     this.authenticationService.logout();
   }
