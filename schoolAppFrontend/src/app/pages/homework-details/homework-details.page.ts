@@ -1,25 +1,39 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { HomeworkService } from 'src/app/services/homework.service';
 
 @Component({
   selector: 'app-homework-details',
   templateUrl: './homework-details.page.html',
   styleUrls: ['./homework-details.page.scss'],
 })
-export class HomeworkDetailsPage {
+export class HomeworkDetailsPage implements OnInit {
 
   date: any;
-  homework: any;
+  homework = {};
   subjects = [];
+  params = {}
 
-  constructor(private route: ActivatedRoute, private router: Router) {
+  constructor(private route: ActivatedRoute, private router: Router, private homeworkService: HomeworkService) {
     this.route.queryParams.subscribe(params => {
       if (this.router.getCurrentNavigation().extras.state) {
         this.date = this.router.getCurrentNavigation().extras.state.date;
       }
     });
-    this.homework = {'Tamil':'Write 10 thirukural and give explanation for each kural', 'English': 'Write English caps and small letters. Give a word for each letter. Ex: A for Apple', 'Maths':'Give a examples sums for Addition, Subraction, multiply and Divition', 'Science': 'Give science name for few flowers', 'Social Science': 'Mark all states of India in Map'}
-    this.subjects = Object.keys(this.homework);
-   }
+  }
+
+  ngOnInit() {
+    this.params = {
+      'date': this.date,
+      'class': '5',
+      'section': 'a'
+    }
+    this.homeworkService.get(this.homeworkService.getParams(this.params)).subscribe((res) => {
+      res.homeWorksData[0].subjects.forEach(subject => {
+        this.homework[subject.subjectName] = subject.edition
+        this.subjects = Object.keys(this.homework);
+      });
+    });
+  }
 
 }
