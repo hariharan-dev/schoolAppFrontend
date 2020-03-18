@@ -53,8 +53,8 @@ const routes: Routes = [
   //   loadChildren: () => import('./pages/login/login.module').then( m => m.LoginPageModule)
   // },
   {
-    path: 'events-page',
-    loadChildren: () => import('./pages/events-page/events-page.module').then( m => m.EventsPageModule)
+    path: 'eventspage',
+    loadChildren: () => import('../app/pages/events-page/events-page.module').then( m => m.EventsPageModule)
   },
   {
     path: 'performance',
