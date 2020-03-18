@@ -6,7 +6,9 @@ import { Component } from '@angular/core';
   styleUrls: ['timetable.page.scss']
 })
 export class TimetablePage {
-
+   date:Date = new Date();
+  // console.log(date);
   constructor() {}
+ 
 
 }
