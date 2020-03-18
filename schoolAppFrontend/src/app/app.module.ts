@@ -1,5 +1,5 @@
-import { FormsModule } from '@angular/forms';
-import { MbscModule } from '@mobiscroll/angular';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouteReuseStrategy } from '@angular/router';
@@ -7,21 +7,28 @@ import { RouteReuseStrategy } from '@angular/router';
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
-import { OverlayModule } from "@angular/cdk/overlay";
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import {MatExpansionModule} from '@angular/material/expansion';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {MatFormFieldModule} from '@angular/material/form-field'
+import { IonicStorageModule } from '@ionic/storage';
+import { LoginPage } from './pages/login/login.page';
+import { ExamDatesPipe } from './pages/exam-dates.pipe';
+import { ExamSyllabusPipe } from './pages/exam-syllabus.pipe';
+import { ReportCardPipe } from './pages/report-card.pipe';
 
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, LoginPage, ExamDatesPipe, ExamSyllabusPipe, ReportCardPipe],
   entryComponents: [],
-  imports: [ 
-    FormsModule, MatFormFieldModule, OverlayModule,
-    MbscModule, BrowserModule,BrowserAnimationsModule,MatExpansionModule, IonicModule.forRoot(), AppRoutingModule],
+  imports: [
+    FormsModule,
+    HttpClientModule,
+    ReactiveFormsModule,
+    BrowserModule,
+    IonicModule.forRoot(),
+    AppRoutingModule,
+    IonicStorageModule.forRoot()],
   providers: [
     StatusBar,
     SplashScreen,
@@ -30,4 +37,4 @@ import {MatFormFieldModule} from '@angular/material/form-field'
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
-export class AppModule {}
+export class AppModule { }

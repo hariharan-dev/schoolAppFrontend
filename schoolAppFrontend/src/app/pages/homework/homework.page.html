@@ -3,12 +3,12 @@
     <ion-title>
       Homework
     </ion-title>
-    <ion-buttons slot="start">
-      <ion-back-button defaultHref="home"></ion-back-button>
+    <ion-buttons slot="end">
+      <ion-back-button defaultHref="members/home"></ion-back-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <mbsc-calendar display="inline" [options]="dateSettings"></mbsc-calendar>
+  <ejs-calendar #ejCalendar dayHeaderFormat='Narrow' (change)="onChange($event)"></ejs-calendar>
 </ion-content>

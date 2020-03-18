@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { MbscDatetimeOptions } from '@mobiscroll/angular';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router, NavigationExtras } from '@angular/router';
+import { CalendarComponent } from '@syncfusion/ej2-angular-calendars';
+
 
 @Component({
   selector: 'app-homework',
@@ -9,23 +10,23 @@ import { Router, NavigationExtras } from '@angular/router';
 })
 export class HomeworkPage implements OnInit {
 
-  constructor(private router: Router) {}
+  @ViewChild('ejCalendar', {static: false}) calendarObj: CalendarComponent;
+
+  constructor(private router: Router) { }
 
   ngOnInit() {
 
   }
 
-  dateSettings: MbscDatetimeOptions = {
-    onSet: (event, inst) => {
-      console.log("Homework page");
-      let selectedDate: NavigationExtras = {
-        state: {
-          date: event.valueText
-        }
-      };
-      this.router.navigate(['/homework-details'], selectedDate);
-    }
-
+  onChange(args) {
+    var date = args.value.toLocaleDateString();
+    let selectedDate: NavigationExtras = {
+      state: {
+        date: date
+      }
+    };
+    this.router.navigate(['/homework-details'], selectedDate);
+    this.calendarObj.value = null;
   }
 
 }
