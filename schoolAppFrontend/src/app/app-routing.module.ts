@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from './guards/auth.guard';
 import { LoginPage } from './pages/login/login.page';
+import { ReportCardPage } from './pages/report-card/report-card.page';
+import { ExamSyllabusPage } from './pages/exam-syllabus/exam-syllabus.page';
 
 const routes: Routes = [
   // {
@@ -15,6 +17,8 @@ const routes: Routes = [
   },
   { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: 'login', component: LoginPage },
+  { path: 'report', component: ReportCardPage },
+  { path: 'examSyllabus', component: ExamSyllabusPage },
   // {
   //   path: '',
   //   loadChildren: () => import('./pages/login/login.module').then( m => m.LoginPageModule)
@@ -66,7 +70,7 @@ const routes: Routes = [
   },
   {
     path: 'report-card',
-    loadChildren: () => import('./pages/report-card/report-card.module').then( m => m.ReportCardPageModule)
+    loadChildren: () => import('../app/pages/report-card/report-card.module').then( m => m.ReportCardPageModule)
   },
   {
     path: 'exam-syllabus',
