@@ -59,6 +59,18 @@ const routes: Routes = [
   {
     path: 'dashboard',
     loadChildren: () => import('./members/dashboard/dashboard.module').then( m => m.DashboardPageModule)
+  },
+  {
+    path: 'report-card',
+    loadChildren: () => import('./pages/report-card/report-card.module').then( m => m.ReportCardPageModule)
+  },
+  {
+    path: 'exam-syllabus',
+    loadChildren: () => import('./pages/exam-syllabus/exam-syllabus.module').then( m => m.ExamSyllabusPageModule)
+  },
+  {
+    path: 'exam-dates',
+    loadChildren: () => import('./pages/exam-dates/exam-dates.module').then( m => m.ExamDatesPageModule)
   }
 ];
 @NgModule({
