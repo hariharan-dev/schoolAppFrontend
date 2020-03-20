@@ -13,10 +13,13 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { IonicStorageModule } from '@ionic/storage';
 import { LoginPage } from './pages/login/login.page';
+import { ExamDatesPipe } from './pages/exam-dates.pipe';
+import { ExamSyllabusPipe } from './pages/exam-syllabus.pipe';
+import { ReportCardPipe } from './pages/report-card.pipe';
 
 
 @NgModule({
-  declarations: [AppComponent, LoginPage],
+  declarations: [AppComponent, LoginPage, ExamDatesPipe, ExamSyllabusPipe, ReportCardPipe],
   entryComponents: [],
   imports: [
     FormsModule,
