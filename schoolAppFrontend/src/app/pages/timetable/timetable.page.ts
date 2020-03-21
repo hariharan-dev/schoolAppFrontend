@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import * as $ from 'jquery';
 
 @Component({
   selector: 'app-timetable',
@@ -21,9 +22,17 @@ export class TimetablePage {
     ["P8","Phy","Tam","Art","Tam","Sci"]
   ]
   constructor() {}
-  weekday = this.dateNow.getDay()-2;
+  weekday = this.dateNow.getDay();
+  hour = this.dateNow.getTime();
   log(){
    console.log(this.weekday)
+  }
+  ngOnInit() {
+    $(document).ready(function () {
+      var day = parseInt($(".weekday").text());
+      var hour = (parseInt($(".hour").text())-8)
+      $(".timetable-bg .headerCol").eq(hour).find('div').eq(day).addClass("highlightClass");
+    });
   }
 
   // currTime = this.dateNow.getHours();

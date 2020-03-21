@@ -13,7 +13,19 @@ export class ExamDatesPage implements OnInit {
 
   objectKeys = Object.keys;
 
-  exams = [{ '1st Mid-Term': { 'Tamil': ['21-8-2019', '9 A.M'], 'English': ['22-8-2019', '9 A.M'], 'Maths': ['23-8-2019', '9 A.M'] } }, { '2nd Mid-Term': { 'Tamil': ['21-8-2019', '9 A.M'], 'English': ['22-10-2019', '9 A.M'], 'Maths': ['23-10-2019', '9 A.M'] } }];
+  exams = [{ '1st Mid-Term': 
+                { 
+                  'Tamil': ['21-8-2019', '9 A.M'], 
+                  'English': ['22-8-2019', '9 A.M'], 
+                  'Maths': ['23-8-2019', '9 A.M'] }
+                 },
+          { '2nd Mid-Term': 
+                { 'Tamil': ['21-8-2019', '9 A.M'],
+                 'English': ['22-10-2019', '9 A.M'],
+                  'Maths': ['23-10-2019', '9 A.M']
+                 }
+          }
+        ];
 
 
   constructor() { }
