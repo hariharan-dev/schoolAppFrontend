@@ -17,8 +17,6 @@ const routes: Routes = [
   },
   { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: 'login', component: LoginPage },
-  { path: 'report', component: ReportCardPage },
-  { path: 'examSyllabus', component: ExamSyllabusPage },
   // {
   //   path: '',
   //   loadChildren: () => import('./pages/login/login.module').then( m => m.LoginPageModule)

@@ -13,7 +13,7 @@ export class ExamDatesPage implements OnInit {
 
   objectKeys = Object.keys;
 
-  exams = [{ '1stTerm': { 'Tamil': ['21-8-2019', '9 A.M'], 'English': ['22-8-2019', '9 A.M'], 'Maths': ['23-8-2019', '9 A.M'] } }, { '2nd Term': { 'Tamil': ['21-8-2019', '9 A.M'], 'English': ['22-10-2019', '9 A.M'], 'Maths': ['23-10-2019', '9 A.M'] } }];
+  exams = [{ '1st Mid-Term': { 'Tamil': ['21-8-2019', '9 A.M'], 'English': ['22-8-2019', '9 A.M'], 'Maths': ['23-8-2019', '9 A.M'] } }, { '2nd Mid-Term': { 'Tamil': ['21-8-2019', '9 A.M'], 'English': ['22-10-2019', '9 A.M'], 'Maths': ['23-10-2019', '9 A.M'] } }];
 
 
   constructor() { }
@@ -27,8 +27,8 @@ export class ExamDatesPage implements OnInit {
         if ($(this).closest("div").find("div:first").css("display") == "none") {
           $(this).closest("div").find("div:first").show();
           $(this).closest("div").find(".plus").text("-");
-          $(this).closest("div").find(".plus").css("background", "#ffffff");
-          $(this).closest("div").find(".plus").css("color", "#000");
+          $(this).closest("div").find(".plus").css("background", "#888888");
+          $(this).closest("div").find(".plus").css("color", "#fff");
           $(this).closest("div").find("h3").css("border-top", "2px solid var(--ion-color-primary)");
           $(this).closest("div").find("h3").css("border-left", "2px solid var(--ion-color-primary)");
           $(this).closest("div").find("h3").css("border-right", "2px solid var(--ion-color-primary)");
