@@ -65,6 +65,7 @@ ion-row.headerCol ion-col{
 ion-row  ion-col:first-child{
   background: white;
 }
+
 ion-col{
   // border:1px solid;
   text-align: center;
@@ -79,6 +80,10 @@ ion-col{
     font-size: 20px;
     // border-radius: 16px;
     //  height: 100px;
+    div.highlightClass{
+      border: 3px solid;
+      border-radius: 50%;
+    }
 }
 
 .col:last-child {

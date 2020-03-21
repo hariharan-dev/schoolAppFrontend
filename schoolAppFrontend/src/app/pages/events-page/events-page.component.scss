@@ -1,5 +1,6 @@
 ion-content{
     --background: rgb(9,24,45);
+
     .event-card{
       background-color: white;
       width: 94%;
@@ -7,6 +8,7 @@ ion-content{
       // text-align: center;
       padding: 15px;
       margin-top: 10px;
+      margin-bottom: 10px;
       p{
         width: 75%;
         border: 3px dotted #c60929;

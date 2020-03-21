@@ -6,10 +6,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./report-card.page.scss'],
 })
 export class ReportCardPage implements OnInit {
+  
 
   constructor() { }
 
   ngOnInit() {
+   
   }
+ 
 
+ 
 }
