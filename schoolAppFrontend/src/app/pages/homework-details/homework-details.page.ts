@@ -28,22 +28,40 @@ export class HomeworkDetailsPage implements OnInit {
         }
         this.homework = {};
         this.subjects = [];
-        this.homeworkService.get(this.homeworkService.getParams(this.params)).subscribe((res) => {
-          if(res.homeWorksData.length > 0) {
-          this.homeworkDetails = new Homework().deserialize(res.homeWorksData[0]);
-          this.homeworkDetails.subjects.forEach(subject => {
-            this.homework[subject.subject_name] = subject.edition
-            this.subjects = Object.keys(this.homework);
-            console.log("Test", this.homeworkDetails.date);
-          });
-        }
-        });
+        this.fetchHomeWorkDetails(this.params);
       }
     });
+    if(Object.keys(this.params).length === 0) {
+      this.date = "03/14/2020";
+      this.params = {
+        'date': this.date,
+        'class': '5',
+        'section': 'a'
+      }
+      this.fetchHomeWorkDetails(this.params);
+    }
   }
 
   ngOnInit() {
     console.log("Date");
+  }
+
+  fetchHomeWorkDetails(homeworkParams) {
+    this.homeworkService.get(this.homeworkService.getParams(homeworkParams)).subscribe((res) => {
+      if(res.homeWorksData.length > 0) {
+      this.homeworkDetails = new Homework().deserialize(res.homeWorksData[0]);
+      this.homeworkDetails.subjects.forEach(subject => {
+        this.homework[subject.subject_name] = subject.edition
+        this.subjects = Object.keys(this.homework);
+        console.log("Test", this.homeworkDetails.date);
+      });
+    }
+    });
+
+  }
+
+  fetchAllDays() {
+    this.router.navigate(['homework']);
   }
 
   onDestroy() {
